@@ -36,6 +36,8 @@ subprojects {
                 entry("junit-jupiter")
             }
             dependencySet("io.ktor:1.6.0") {
+                entry("ktor-client-core")
+                entry("ktor-client-apache")
                 entry("ktor-server-core")
                 entry("ktor-server-netty")
             }
