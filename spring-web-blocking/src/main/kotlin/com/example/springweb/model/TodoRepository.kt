@@ -23,4 +23,3 @@ class TodoRepository(@Autowired val todoMapper: TodoMapper, val clock: Clock) {
         return todoMapper.find(id)?.toTodo()
     }
 }
-

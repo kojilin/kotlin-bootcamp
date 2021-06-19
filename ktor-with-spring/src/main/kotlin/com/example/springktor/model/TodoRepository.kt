@@ -5,8 +5,7 @@ import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import java.time.Instant
 
-interface TodoRepository : CoroutineCrudRepository<Todo, Long> {
-}
+interface TodoRepository : CoroutineCrudRepository<Todo, Long>
 
 class Todo(@Id var id: Long?, val name: String, @Column("created_at") val createdAt: Instant) {
     override fun equals(other: Any?): Boolean {
