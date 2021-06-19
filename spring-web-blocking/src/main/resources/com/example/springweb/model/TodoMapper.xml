@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.springweb.repository.TodoRepository">
+<mapper namespace="com.example.springweb.model.TodoMapper">
   <insert id="insertUsingXml" useGeneratedKeys="true" keyProperty="id">
-    INSERT INTO todo (name, created_at)
-    VALUES (#{name}, #{createdAt})  </insert>
+    INSERT INTO todo (name, completed, created_at)
+    VALUES (#{name}, #{completed}, #{createdAt})  </insert>
 </mapper>

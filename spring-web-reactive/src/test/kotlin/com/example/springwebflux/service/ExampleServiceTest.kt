@@ -1,8 +1,8 @@
 package com.example.springwebflux.service
 
 import com.example.springwebflux.config.TestConfig
-import com.example.springwebflux.repository.AbstractContainerBaseTest
-import com.example.springwebflux.repository.TodoRepository
+import com.example.springwebflux.model.AbstractContainerBaseTest
+import com.example.springwebflux.model.TodoRepository
 import com.example.springwebflux.runBlockingAndRollback
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat

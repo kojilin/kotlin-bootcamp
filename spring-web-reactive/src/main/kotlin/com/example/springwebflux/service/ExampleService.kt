@@ -1,7 +1,7 @@
 package com.example.springwebflux.service
 
-import com.example.springwebflux.repository.Todo
-import com.example.springwebflux.repository.TodoRepository
+import com.example.springwebflux.model.Todo
+import com.example.springwebflux.model.TodoRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.transaction.reactive.TransactionalOperator

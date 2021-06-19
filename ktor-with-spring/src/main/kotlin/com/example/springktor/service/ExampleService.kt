@@ -1,8 +1,8 @@
 package com.example.springktor.service
 
 import com.example.springktor.client.RandomClient
-import com.example.springktor.repository.Todo
-import com.example.springktor.repository.TodoRepository
+import com.example.springktor.model.Todo
+import com.example.springktor.model.TodoRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext

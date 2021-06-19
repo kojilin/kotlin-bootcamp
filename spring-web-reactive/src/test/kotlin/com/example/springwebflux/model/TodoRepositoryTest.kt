@@ -1,4 +1,4 @@
-package com.example.springwebflux.repository
+package com.example.springwebflux.model
 
 import com.example.springwebflux.config.TestConfig
 import com.example.springwebflux.runBlockingAndRollback
