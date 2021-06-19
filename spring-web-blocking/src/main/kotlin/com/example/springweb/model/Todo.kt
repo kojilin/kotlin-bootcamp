@@ -21,4 +21,8 @@ class Todo(val id: Long, val name: String, val completed: Boolean, val createdAt
     override fun hashCode(): Int {
         return id.hashCode()
     }
+
+    override fun toString(): String {
+        return "Todo(id=$id, name='$name', completed=$completed, createdAt=$createdAt)"
+    }
 }

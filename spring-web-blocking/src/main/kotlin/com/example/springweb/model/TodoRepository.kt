@@ -8,18 +8,22 @@ import java.time.Instant
 @Repository
 class TodoRepository(@Autowired val todoMapper: TodoMapper, val clock: Clock) {
     fun create(name: String, completed: Boolean): Todo {
-        val entry = TodoEntry(null, name, completed, Instant.now(clock))
-        todoMapper.insert(entry)
-        return entry.toTodo()
+        val keyHolder = KeyHolder(null)
+        todoMapper.insert(name, completed, Instant.now(clock), keyHolder)
+        return keyHolder.key?.let {
+            todoMapper.find(it)
+        } ?: throw  IllegalStateException("Failed to insert")
     }
 
     fun createUsingXml(name: String, completed: Boolean): Todo {
-        val entry = TodoEntry(null, name, completed, Instant.now(clock))
-        todoMapper.insertUsingXml(entry)
-        return entry.toTodo()
+        val keyHolder = KeyHolder(null)
+        todoMapper.insertUsingXml(name, completed, Instant.now(clock), keyHolder)
+        return keyHolder.key?.let {
+            todoMapper.find(it)
+        } ?: throw  IllegalStateException("Failed to insert")
     }
 
     fun find(id: Long): Todo? {
-        return todoMapper.find(id)?.toTodo()
+        return todoMapper.find(id)
     }
 }

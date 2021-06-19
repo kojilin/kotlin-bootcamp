@@ -18,10 +18,19 @@ import java.time.Instant
 @ContextConfiguration(initializers = [AbstractContainerBaseTest.Initializer::class])
 @Import(TestConfig::class, TodoRepository::class)
 class TodoRepositoryTest(@Autowired val target: TodoRepository) {
-
     @Test
     fun create() {
         val todo = target.create("Foo", false)
+        assertThat(todo.name).isEqualTo("Foo")
+        assertThat(todo.createdAt).isEqualTo(Instant.parse("2018-12-04T14:01:23.00Z"))
+    }
+
+    @Test
+    fun find() {
+        assertThat(target.find(1)).isNull()
+
+        val todo = target.create("Foo", false)
+
         val found = target.find(todo.id)
         assertThat(found?.name).isEqualTo("Foo")
         assertThat(found?.createdAt).isEqualTo(Instant.parse("2018-12-04T14:01:23.00Z"))
@@ -30,9 +39,8 @@ class TodoRepositoryTest(@Autowired val target: TodoRepository) {
     @Test
     fun create_usingXml() {
         val todo = target.createUsingXml("Foo", false)
-        val found = target.find(todo.id)
-        assertThat(found?.name).isEqualTo("Foo")
-        assertThat(found?.createdAt).isEqualTo(Instant.parse("2018-12-04T14:01:23.00Z"))
+        assertThat(todo.name).isEqualTo("Foo")
+        assertThat(todo.createdAt).isEqualTo(Instant.parse("2018-12-04T14:01:23.00Z"))
     }
 }
 

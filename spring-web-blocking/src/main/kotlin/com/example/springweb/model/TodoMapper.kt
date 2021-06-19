@@ -1,28 +1,29 @@
 package com.example.springweb.model
 
-import org.apache.ibatis.annotations.Insert
-import org.apache.ibatis.annotations.Mapper
-import org.apache.ibatis.annotations.Options
-import org.apache.ibatis.annotations.Select
+import org.apache.ibatis.annotations.*
 import java.time.Instant
 
 @Mapper
 interface TodoMapper {
     @Insert("INSERT INTO todo (name, completed, created_at) VALUES(#{name}, #{completed}, #{createdAt})")
-    @Options(useGeneratedKeys = true, keyProperty = "id")
-    fun insert(todo: TodoEntry): Int
+    @Options(useGeneratedKeys = true, keyProperty = "keyHolder.key")
+    fun insert(
+        name: String,
+        completed: Boolean,
+        createdAt: Instant,
+        @Param("keyHolder") keyHolder: KeyHolder
+    ): Int
 
     // From xml
-    fun insertUsingXml(todo: TodoEntry): Int
+    fun insertUsingXml(
+        name: String,
+        completed: Boolean,
+        createdAt: Instant,
+        @Param("keyHolder") keyHolder: KeyHolder
+    ): Int
 
     @Select("SELECT * from todo where id=#{id}")
-    fun find(id: Long): TodoEntry?
+    fun find(id: Long): Todo?
 }
 
-data class TodoEntry(var id: Long?, val name: String, val completed: Boolean, val createdAt: Instant) {
-    fun toTodo(): Todo {
-        return id?.let {
-            return Todo(it, name, completed, createdAt)
-        } ?: throw IllegalStateException("Can't convert to Todo")
-    }
-}
+data class KeyHolder(var key: Long?)
