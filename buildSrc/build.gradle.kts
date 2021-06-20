@@ -7,5 +7,5 @@ repositories {
 }
 
 dependencies {
-    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.17.1")
+    implementation(libs.detekt)
 }
