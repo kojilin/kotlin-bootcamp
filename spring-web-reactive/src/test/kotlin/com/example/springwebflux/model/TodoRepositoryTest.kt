@@ -25,7 +25,7 @@ class TodoRepositoryTest(
         val todo = Todo(null, "Foo", Instant.now(clock))
         target.save(todo)
 
-        assertThat(todo.id).isNotNull()
+        assertThat(todo.id).isNotNull
 
         val found = target.findById(todo.id!!)
         assertThat(found?.name).isEqualTo("Foo")

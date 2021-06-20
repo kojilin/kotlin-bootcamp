@@ -3,6 +3,7 @@ package com.example.springktor.service
 import com.example.springktor.client.RandomClient
 import com.example.springktor.model.Todo
 import com.example.springktor.model.TodoRepository
+import com.example.springktor.service.ExampleService.ExampleService.REQUEST_NUMBER
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
@@ -12,7 +13,7 @@ import org.springframework.transaction.reactive.TransactionalOperator
 import org.springframework.transaction.reactive.executeAndAwait
 import java.time.Clock
 import java.time.Instant
-import java.util.*
+import java.util.UUID
 
 @Service
 class ExampleService(
@@ -24,7 +25,7 @@ class ExampleService(
     @Transactional
     suspend fun createTwice(throwException: Boolean): Todo {
         todoRepository.save(Todo(null, UUID.randomUUID().toString(), Instant.now(clock)))
-        val response = client.getRandom(12).await()
+        val response = client.getRandom(REQUEST_NUMBER).await()
         val body = withContext(Dispatchers.IO) {
             @Suppress("BlockingMethodInNonBlockingContext")
             response.string()
@@ -57,5 +58,9 @@ class ExampleService(
             }
             todoRepository.save(Todo(null, UUID.randomUUID().toString(), Instant.now(clock)))
         }
+    }
+
+    object ExampleService {
+        const val REQUEST_NUMBER = 12
     }
 }

@@ -28,7 +28,7 @@ class ExampleServiceTest(
     @Test
     fun createTwice(): Unit = operator.runBlockingAndRollback {
         val todo = service.createTwice(false)
-        assertThat(todo).isNotNull()
+        assertThat(todo).isNotNull
         assertThat(todoRepository.count()).isEqualTo(2)
     }
 
