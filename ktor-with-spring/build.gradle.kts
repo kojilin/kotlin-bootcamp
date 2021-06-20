@@ -1,6 +1,7 @@
 plugins {
     id("org.springframework.boot")
     kotlin("plugin.spring")
+    id("com.example.kotlinbootcamp.detekt")
 }
 
 dependencies {
@@ -12,7 +13,6 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
     implementation("io.reactivex.rxjava2:rxjava:2.2.21")
-
 
     implementation("io.ktor:ktor-server-core")
     implementation("io.ktor:ktor-server-netty")
@@ -40,5 +40,4 @@ dependencies {
     testRuntimeOnly("mysql:mysql-connector-java")
     testRuntimeOnly("org.flywaydb:flyway-core")
     testRuntimeOnly("org.springframework.boot:spring-boot-starter-jdbc")
-
 }
