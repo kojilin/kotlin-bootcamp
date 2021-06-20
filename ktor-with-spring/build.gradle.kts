@@ -1,6 +1,5 @@
 plugins {
     id("org.springframework.boot")
-    kotlin("plugin.spring")
     id("com.example.kotlinbootcamp.detekt")
 }
 
@@ -19,8 +18,6 @@ dependencies {
     implementation("ch.qos.logback:logback-classic")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactive")

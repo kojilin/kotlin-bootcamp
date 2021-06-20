@@ -1,6 +1,5 @@
 plugins {
     id("org.springframework.boot")
-    kotlin("plugin.spring")
 }
 
 dependencies {
@@ -15,8 +14,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     // This imports other spring's jdbc starter.
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter")
 
